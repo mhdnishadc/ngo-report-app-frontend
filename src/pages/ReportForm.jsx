@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import server_url from '../services/ServerUrl';
+
 
 function ReportForm() {
   const [formData, setFormData] = useState({
@@ -19,7 +21,7 @@ function ReportForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/report', formData);
+      await axios.post(`${server_url}/report`, formData);
       setMessage('✅ Report submitted successfully!');
       setFormData({
         ngoId: '',

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import server_url from '../services/ServerUrl';
+
 
 function AdminDashboard() {
   const [month, setMonth] = useState('');
@@ -8,7 +10,7 @@ function AdminDashboard() {
   const fetchData = async () => {
     if (!month) return;
     try {
-      const res = await axios.get(`http://localhost:5000/dashboard?month=${month}`);
+      const res = await axios.get(`${server_url}/dashboard?month=${month}`);
       setData(res.data);
     } catch (err) {
       setData(null);
